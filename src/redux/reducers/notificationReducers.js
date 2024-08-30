@@ -15,6 +15,9 @@ const notificationSlice = createSlice({
     extraReducers:{
         "todos/add":(state, action)=>{
             state.message = "New Todo Created!!";
+        },
+        "note/add":(state, action)=>{
+            state.message = "New Note Created!!";
         }
     }
 })
