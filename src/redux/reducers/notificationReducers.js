@@ -8,7 +8,9 @@ const notificationSlice = createSlice({
     name: 'notification',
     initialState,
     reducers: {
-
+        reset:(state, action) => {
+            state.message = ""
+        }
     },
     extraReducers:{
         "todos/add":(state, action)=>{
@@ -18,4 +20,5 @@ const notificationSlice = createSlice({
 })
 
 export const notificationReducer = notificationSlice.reducer;
+export const resetNotification =  notificationSlice.actions.reset;
 export const notificatioSelector = (state) => state.notificationReducer.message;
