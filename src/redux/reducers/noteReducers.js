@@ -26,7 +26,9 @@ const noteSlice = createSlice({
             state.notes.splice(action.payload, 1);
         }
     }
-})
+});
+    // exporting reducer
+export const noteReducer = noteSlice.reducer;
 
 
 // reducer using react redux
