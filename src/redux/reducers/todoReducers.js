@@ -1,7 +1,5 @@
 // import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
-
-const { createSlice } = require("@reduxjs/toolkit")
-
+import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     todos: [
         { text: 'Learn React', completed: true },
