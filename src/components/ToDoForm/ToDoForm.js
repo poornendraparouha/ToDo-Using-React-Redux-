@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./ToDoForm.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 // import { AddTodo } from "../../redux/actions/todoActions";
 import { actions } from "../../redux/reducers/todoReducers";
+import { notificatioSelector } from "../../redux/reducers/notificationReducers";
 
 function ToDoForm() {
   const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
+  const message = useSelector(notificatioSelector)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +20,9 @@ function ToDoForm() {
 
   return (
     <div className="container">
+      {message && <div class="alert alert-success" role="alert">
+        {message}
+        </div> }
       
     <form onSubmit={handleSubmit}>
       <input
