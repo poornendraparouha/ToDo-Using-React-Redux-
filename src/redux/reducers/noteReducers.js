@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     notes: [
-        { text: 'LLorem ipsum dolor sit amet, consectetur adipiscing elit.earn React', createdOn: new Date() },
-        { text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', createdOn: new Date() },
-        { text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', createdOn: new Date() },
+        { text: 'LLorem ipsum dolor sit amet, consectetur adipiscing elit.earn React', createdOn: new Date().toDateString() },
+        { text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', createdOn: new Date().toDateString() },
+        { text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', createdOn: new Date().toDateString() },
     ]
 }
 
@@ -18,7 +18,7 @@ const noteSlice = createSlice({
         add:(state, action)=>{
             state.notes.push({
                 text: action.payload,
-                createdOn: new Date()
+                createdOn: new Date().toDateString()
             })
         },
         // This is delete action
