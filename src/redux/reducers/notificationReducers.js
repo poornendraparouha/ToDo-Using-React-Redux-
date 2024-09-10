@@ -25,24 +25,24 @@ const notificationSlice = createSlice({
     // }
 
     // 2nd way of craeting extraReducer by using builder and addCase
-    // extraReducers: (builder) => {
-    //     builder.addCase(todoActions.add,  (state, action) => {
-    //         state.message = "New Todo Created!!";
-    //     });
-    //     builder.addCase(noteActions.add,  (state, action) => {
-    //         state.message = "New Note Created!!";
-    //     });
-    // }
+    extraReducers: (builder) => {
+        builder.addCase(todoActions.add,  (state, action) => {
+            state.message = "New Todo Created!!";
+        });
+        builder.addCase(noteActions.add,  (state, action) => {
+            state.message = "New Note Created!!";
+        });
+    }
 
     // 3rd way of craeting extraReducer by using map object{ map objects: [key] : value}
-    extraReducers:{
-        [todoActions.add]: (state, action) => {
-            state.message = "New Todo Created!!";
-        },
-        [noteActions.add]: (state, action) => {
-            state.message = "New Note Created!!";
-        }
-    }
+    // extraReducers:{
+    //     [todoActions.add]: (state, action) => {
+    //         state.message = "New Todo Created!!";
+    //     },
+    //     [noteActions.add]: (state, action) => {
+    //         state.message = "New Note Created!!";
+    //     }
+    // }
 })
 
 export const notificationReducer = notificationSlice.reducer;
