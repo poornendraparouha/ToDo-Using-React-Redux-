@@ -2,8 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     todos: [
-        { text: 'Learn React', completed: true },
-        { text: 'Learn Redux', completed: false },
+        // { text: 'Learn React', completed: true },
+        // { text: 'Learn Redux', completed: false },
     ]
 }
 
@@ -12,6 +12,10 @@ const todoSlice = createSlice({
     name: 'todos',
     initialState: initialState,
     reducers: {
+        // setting initial state fatching from api
+        setInitialState:(state, action)=>{
+            state.todos = [...action.payload]
+        },
         // This is add action
         add:(state, action)=>{
             state.todos.push({

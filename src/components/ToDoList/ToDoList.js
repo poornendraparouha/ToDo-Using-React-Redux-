@@ -11,8 +11,7 @@ function ToDoList() {
   const dispatch = useDispatch();
   // const todos = store.getState().todos
 
-  // using fatch function
-
+  //fatching data using fatch function
   // useEffect(()=>{
   //   fetch("http://localhost:4100/api/todos")
   //   .then(res => res.json())
@@ -22,11 +21,12 @@ function ToDoList() {
   // },[]);
 
 
-  // using axios library
+  // fatching data using axios library
   useEffect(() => {
     axios.get("http://localhost:4100/api/todos")
     .then(res => {
       console.log(res.data);
+      dispatch(actions.setInitialState(res.data));
     })
   },[])
 
