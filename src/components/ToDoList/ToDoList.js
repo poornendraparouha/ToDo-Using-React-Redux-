@@ -4,20 +4,31 @@ import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/reducers/todoReducers";
 import { todoSelector } from "../../redux/reducers/todoReducers";
 import { useEffect } from "react";
+import axios from "axios";
 
 function ToDoList() {
   const todos = useSelector(todoSelector);
   const dispatch = useDispatch();
   // const todos = store.getState().todos
 
-  useEffect(()=>{
-    fetch("http://localhost:4100/api/todos")
-    .then(res => res.json())
-    .then(parsedJson => {
-      console.log(parsedJson)
-    })
-  },[]);
+  // using fatch function
 
+  // useEffect(()=>{
+  //   fetch("http://localhost:4100/api/todos")
+  //   .then(res => res.json())
+  //   .then(parsedJson => {
+  //     console.log(parsedJson)
+  //   })
+  // },[]);
+
+
+  // using axios library
+  useEffect(() => {
+    axios.get("http://localhost:4100/api/todos")
+    .then(res => {
+      console.log(res.data);
+    })
+  },[])
 
   return (
     <div className="container">
