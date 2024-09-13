@@ -1,7 +1,7 @@
 import "./ToDoList.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { toggleTodo } from "../../redux/actions/todoActions";
-import { actions } from "../../redux/reducers/todoReducers";
+import { actions, getInitialStateAsync } from "../../redux/reducers/todoReducers";
 import { todoSelector } from "../../redux/reducers/todoReducers";
 import { useEffect } from "react";
 // import axios from "axios";
@@ -11,24 +11,25 @@ function ToDoList() {
   const dispatch = useDispatch();
   // const todos = store.getState().todos
 
-  //fatching data using fatch function
-  // useEffect(()=>{
-  //   fetch("http://localhost:4100/api/todos")
-  //   .then(res => res.json())
-  //   .then(parsedJson => {
-  //     console.log(parsedJson)
-  //   })
-  // },[]);
 
+  useEffect(()=>{
+    dispatch(getInitialStateAsync());
 
-  // fatching data using axios library { moved this to the todo reducer in asyncthunk function}
-  // useEffect(() => {
-  //   axios.get("http://localhost:4100/api/todos")
-  //   .then(res => {
-  //     console.log(res.data);
-  //     dispatch(actions.setInitialState(res.data));
-  //   })
-  // },[])
+    //fatching data using fatch function
+    // fetch("http://localhost:4100/api/todos")
+    // .then(res => res.json())
+    // .then(parsedJson => {
+    //   console.log(parsedJson)
+    // })
+
+    // fatching data using axios library { moved this to the todo reducer in asyncthunk function}
+    //   axios.get("http://localhost:4100/api/todos")
+    //   .then(res => {
+    //     console.log(res.data);
+    //     dispatch(actions.setInitialState(res.data));
+    //   })
+  },[dispatch]);
+
 
   return (
     <div className="container">
