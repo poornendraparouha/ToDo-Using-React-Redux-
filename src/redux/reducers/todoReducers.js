@@ -1,11 +1,22 @@
 // import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
-import { createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import axios from "axios";
+
 const initialState = {
     todos: [
         // { text: 'Learn React', completed: true },
         // { text: 'Learn Redux', completed: false },
     ]
 }
+
+export const getInitialStateAsync = createAsyncThunk("todo/getInitialState", (arg, thunkAPI) => {
+    axios.get("http://localhost:4100/api/todos")
+    .then(res => {
+      console.log(res.data);
+    //   dispatch(actions.setInitialState(res.data));
+    thunkAPI.dispatch(actions.setInitialState(res.data))
+    });
+})
 
 // creating reducer using redux toolkit
 const todoSlice = createSlice({

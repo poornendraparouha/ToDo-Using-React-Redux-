@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/reducers/todoReducers";
 import { todoSelector } from "../../redux/reducers/todoReducers";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 function ToDoList() {
   const todos = useSelector(todoSelector);
@@ -21,14 +21,14 @@ function ToDoList() {
   // },[]);
 
 
-  // fatching data using axios library
-  useEffect(() => {
-    axios.get("http://localhost:4100/api/todos")
-    .then(res => {
-      console.log(res.data);
-      dispatch(actions.setInitialState(res.data));
-    })
-  },[])
+  // fatching data using axios library { moved this to the todo reducer in asyncthunk function}
+  // useEffect(() => {
+  //   axios.get("http://localhost:4100/api/todos")
+  //   .then(res => {
+  //     console.log(res.data);
+  //     dispatch(actions.setInitialState(res.data));
+  //   })
+  // },[])
 
   return (
     <div className="container">
