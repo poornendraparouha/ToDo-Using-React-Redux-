@@ -21,17 +21,31 @@ export const getInitialStateAsync = createAsyncThunk("todo/getInitialState",
 ()=>{
     return axios.get("http://localhost:4100/api/todos")
 }
-)
+);
+
+export const addTodoAsync = createAsyncThunk("todo/addTodo", async(payload)=>{
+    const response = await fetch("http://localhost:4100/api/todos" , {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: payload,
+                completed: false
+            })
+    });
+    return response.json();
+})
 
 // creating reducer using redux toolkit
 const todoSlice = createSlice({
     name: 'todos',
     initialState: initialState,
     reducers: {
-        // setting initial state fatching from api
-        setInitialState:(state, action)=>{
-            state.todos = [...action.payload]
-        },
+        // // setting initial state fatching from api
+        // setInitialState:(state, action)=>{
+        //     state.todos = [...action.payload]
+        // },
         // This is add action
         add:(state, action)=>{
             state.todos.push({
@@ -55,7 +69,11 @@ const todoSlice = createSlice({
             console.log(" initial state is fulfilled");
             console.log(action.payload);
             state.todos = [...action.payload.data];
-        });
+        })
+        builder.addCase(addTodoAsync.fulfilled, (state, action) =>{
+            console.log(action.payload);
+            state.todos.push(action.payload);
+        })
     }
 });
     // exporting reducer

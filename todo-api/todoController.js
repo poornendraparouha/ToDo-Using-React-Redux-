@@ -11,6 +11,16 @@ const todos=[
     }
 ]
 
-module.exports.get=(req, res)=>{
-    return res.end(JSON.stringify(todos));
-}
+// module.exports.get=(req, res)=>{
+//     return res.end(JSON.stringify(todos));
+// }
+module.exports = {
+    get: (req, res) => {
+        return res.json(todos);
+    },
+    create: (req, res) => {
+        const newTodo = req.body;
+        todos.push(newTodo);
+        return res.status(201).json(newTodo);
+    }
+};
